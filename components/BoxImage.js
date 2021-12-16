@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react'
 import { StyleSheet, Text, View, SafeAreaView, Image, Platform, TouchableOpacity } from 'react-native';
 const icons = {
@@ -8,8 +9,12 @@ const icons = {
 
 function BoxImage(props) {
     const iconName = props.iconName
+    const navigation = useNavigation()
+    const navPressHandler = () => {
+        navigation.navigate(iconName)
+    }
     return (
-        <TouchableOpacity style={styles.center} onPress={() => alert(`${iconName} pressed`)}>
+        <TouchableOpacity style={styles.center} onPress={navPressHandler}>
             <View style={[styles.button,]}>
                 <View style={[styles.center,styles.boxImage,{backgroundColor: props.colorBox}]}>
                     <Image
